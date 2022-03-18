@@ -4,7 +4,6 @@ import { useParams } from 'react-router';
 import { fetchAsyncMovieOrShowDetail, getSelectedMovieOrShow, removeSelectedMovieOrShow } from '../../features/movies/movieSlice';
 import "./MovieDetail.scss";
 import Spinner from 'react-spinner-material';
-import { Link } from 'react-router-dom';
 
 const MovieDetail = () => {
   const { imdbID } = useParams();

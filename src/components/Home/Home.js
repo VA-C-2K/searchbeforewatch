@@ -19,7 +19,7 @@ const Home = () => {
         dispatch(fetchAsyncMovies(term));
         dispatch(fetchAsyncShows(term));
       }
-    },[dispatch]);
+    },[dispatch,term]);
 
   return (
     <div>
