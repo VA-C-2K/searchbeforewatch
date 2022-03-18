@@ -2,15 +2,15 @@ import { createSlice,createAsyncThunk } from "@reduxjs/toolkit";
 import movieApi from "../../common/apis/movieApi"
 import {APIKey} from "../../common/apis/MovieApiKey"
 
-let termStore='';
+let termSeries,termMovie='';
 export const fetchAsyncMovies = createAsyncThunk('movies/fetchAsyncMovies',async (term) => {
     const response = await movieApi.get(`?apiKey=${APIKey}&s=${term}&type=movie`);
-    termStore = term;
+    termMovie = term;
     return response.data;
 })
 export const fetchAsyncShows = createAsyncThunk('movies/fetchAsyncShows',async (term) => {
     const response = await movieApi.get(`?apiKey=${APIKey}&s=${term}&type=series`);
-    termStore = term;
+    termSeries = term;
     return response.data;
 })
 export const fetchAsyncMovieOrShowDetail = createAsyncThunk('movies/fetchAsyncMovieOrShowDetail',async (id) => {
@@ -74,6 +74,7 @@ export const {removeSelectedMovieOrShow} = movieSlice.actions;
 export const getAllMovies = (state) => state.movies.movies;
 export const getAllShows = (state) => state.movies.shows;
 export const getIsLoading = (state) => isLoading;
-export const getTerm = (state) => termStore;
+export const getTermMovie = (state) => termMovie;
+export const getTermSeries = (state) => termSeries;
 export const getSelectedMovieOrShow = (state) => state.movies.selectedMovieOrShow;
 export default movieSlice.reducer;

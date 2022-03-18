@@ -11,8 +11,8 @@ const Header = () => {
   const submitHandler=(e)=>{
     e.preventDefault();
     if (term === "") return alert("please Enter Search Term")
-    dispatch(fetchAsyncMovies(term));
-    dispatch(fetchAsyncShows(term));
+    dispatch(fetchAsyncMovies(term.trim()));
+    dispatch(fetchAsyncShows(term.trim()));
     setTerm("");
   }
   return (

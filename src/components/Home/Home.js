@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import MovieListing from "../MovieListing/MovieListing";
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchAsyncMovies, fetchAsyncShows, getIsLoading ,getTerm} from '../../features/movies/movieSlice';
+import { fetchAsyncMovies, fetchAsyncShows, getIsLoading ,getTermMovie,getTermSeries, removeSelectedMovieOrShow} from '../../features/movies/movieSlice';
 import Spinner from 'react-spinner-material';
 
 const Home = () => {
@@ -9,15 +9,19 @@ const Home = () => {
     const movieText = "Harry";
     const showText = "Friends";
     const isLoading = useSelector(getIsLoading);
-    const term = useSelector(getTerm);
+    const termMovie = useSelector(getTermMovie);
+    const termSeries = useSelector(getTermSeries);
 
     useEffect(() =>{
-      if (term === ""){
+      if (termMovie === "" || termSeries === ""){
       dispatch(fetchAsyncMovies(movieText));
       dispatch(fetchAsyncShows(showText));
       }else{
-        dispatch(fetchAsyncMovies(term));
-        dispatch(fetchAsyncShows(term));
+        dispatch(fetchAsyncMovies(termMovie));
+        dispatch(fetchAsyncShows(termSeries));
+      }
+      return () => {
+        dispatch(removeSelectedMovieOrShow());
       }
     },[dispatch]);
 
