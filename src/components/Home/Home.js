@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useLayoutEffect } from 'react'
 import MovieListing from "../MovieListing/MovieListing";
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchAsyncMovies, fetchAsyncShows, getIsLoading ,getTermMovie,getTermSeries, removeSelectedMovieOrShow} from '../../features/movies/movieSlice';
@@ -12,7 +12,7 @@ const Home = () => {
     const termMovie = useSelector(getTermMovie);
     const termSeries = useSelector(getTermSeries);
 
-    useEffect(() =>{
+    useLayoutEffect(() =>{
       if (termMovie === "" || termSeries === ""){
       dispatch(fetchAsyncMovies(movieText));
       dispatch(fetchAsyncShows(showText));

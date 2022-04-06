@@ -4,19 +4,32 @@ import { useDispatch } from 'react-redux';
 import { fetchAsyncMovies, fetchAsyncShows } from '../../features/movies/movieSlice';
 import { Link } from 'react-router-dom';
 import Home from '../Home/Home';
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const Myterm = createContext();
 const Header = () => {
   const [term,setTerm] = useState("");
   const dispatch = useDispatch();
   const submitHandler=(e)=>{
     e.preventDefault();
-    if (term === "") return alert("please Enter Search Term")
+    if (term === ""){
+      const notify = () => toast.warn("Please Enter Movie or Series!");
+      notify();
+      return;
+    }
     dispatch(fetchAsyncMovies(term.trim()));
     dispatch(fetchAsyncShows(term.trim()));
     setTerm("");
   }
   return (
     <div className='header'>
+      <ToastContainer
+            position="bottom-left"
+            autoClose={1500}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            />
       <div className="logo">
       <Link to="/"><i className="fa fa-video"></i></Link>
       </div>
