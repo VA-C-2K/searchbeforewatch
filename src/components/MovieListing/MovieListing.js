@@ -25,7 +25,7 @@ const MovieListing = () => {
     ))
   ):(
     <div className="movie-error">
-      <h3>{shows.Error}</h3>
+      <h3>{shows.Error }</h3>
     </div>
   );
   return (

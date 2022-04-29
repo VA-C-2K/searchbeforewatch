@@ -1,4 +1,4 @@
-import React,{useState,createContext} from 'react'
+import React,{useState,createContext,useEffect} from 'react'
 import "./Header.scss";
 import { useDispatch } from 'react-redux';
 import { fetchAsyncMovies, fetchAsyncShows } from '../../features/movies/movieSlice';
@@ -6,8 +6,11 @@ import { Link } from 'react-router-dom';
 import Home from '../Home/Home';
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useLocation } from "react-router-dom";
 const Myterm = createContext();
 const Header = () => {
+  let location = useLocation();
+  const [currentLocation ,setCurrentLocation] = useState("");
   const [term,setTerm] = useState("");
   const dispatch = useDispatch();
   const submitHandler=(e)=>{
@@ -21,6 +24,9 @@ const Header = () => {
     dispatch(fetchAsyncShows(term.trim()));
     setTerm("");
   }
+  useEffect(()=>{
+    setCurrentLocation(location.pathname);
+  },[location.pathname]);
   return (
     <div className='header'>
       <ToastContainer
@@ -33,12 +39,17 @@ const Header = () => {
       <div className="logo">
       <Link to="/"><i className="fa fa-video"></i></Link>
       </div>
+       {currentLocation==="/" ?(
       <div className="search-bar">
         <form onSubmit={submitHandler}>
-          <input type="text" value={term} placeholder="Search Movies or Shows" onChange={(e)=>setTerm(e.target.value) }/>
+          <input type="text" value={term} placeholder="Search ..." onChange={(e)=>setTerm(e.target.value) }/>
           <button type="submit"><i className='fa fa-search'></i></button>
         </form>
       </div>
+       ):
+       (
+       <div className='margin-10'></div>
+       )}        
     </div>
   )
 }

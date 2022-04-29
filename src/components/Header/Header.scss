@@ -10,6 +10,7 @@
 .logo{
     font-size: 50px;
     font-weight:900;
+    margin-right:50%;
 }
 .fa-video{
     color: #000;
@@ -18,7 +19,11 @@
     width: 38px;
     height: 38px;
 }
+.margin-10{
+    margin-left: 50%;
+}
 .search-bar{
+    margin-left: 15%;
     width:50%;
     display: flex;
     justify-content:center;
@@ -45,5 +50,24 @@
         padding: 5px 5px 5px 10px ;
         height:38px;
         outline:none;
+    }
+}
+@media only screen and (max-width: 512px) {
+    .search-bar{
+        margin-left:0%;
+        width:80%;
+    }
+    .header{
+      
+        height: 100px;
+        padding: 0px 40px;
+        display: flex;
+        align-items: center;
+        justify-content:space-between; 
+    }
+    .logo{
+        font-size: 50px;
+        font-weight:900;
+        margin-right:50%;
     }
 }

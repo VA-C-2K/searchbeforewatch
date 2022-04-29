@@ -1,5 +1,6 @@
 @import "../../common/colors.scss";
 .movie-section {
+  margin: 10px 20px 50px 20px;
   display: flex;
   justify-content: space-evenly;
   padding: 40px 0px;
@@ -65,15 +66,23 @@
 }
 
 @media only screen and (max-width: 512px) {
+  .movie-section {
+    justify-content:center;
+    margin: 40px 20px 50px 20px;
+    display:block ;
+    padding: 40px 0px;
+    color: $font-primary;
+    font-weight: 400;
+  }
   .section-right {
-    margin-left:10px;
     height:800px;
-    width:400px ;
+    width:100% ;
     img{
     width: 80%;
     height: 100%;
     }
   }
+ 
   .movie-rating {
     padding-left: 20px;
     margin-left: 10px;

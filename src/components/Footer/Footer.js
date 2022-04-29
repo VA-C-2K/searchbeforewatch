@@ -3,8 +3,8 @@ import "./Footer.scss";
 const Footer = () => {
   return (
     <div className="footer">
-      <div>Movie App</div>
-      <div>VA_Creation@2022</div>
+      <div>Search B4 Watch</div>
+      <div>VA_C_2K@2022</div>
     </div>
   )
 }
