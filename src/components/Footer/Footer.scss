@@ -4,10 +4,9 @@
     background-color: $secondary-color;
     height: 72px;
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     color: $font-primary;
-    flex-direction: column;
     top:93%;
     bottom:0;
     position:fixed;
